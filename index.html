@@ -31,10 +31,30 @@
     font-size: 1.7rem;
     letter-spacing: 0.3px;
   }
+  .shield-badge {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 0.9rem;
+  }
+  .shield-badge svg {
+    width: 84px;
+    height: auto;
+    filter: drop-shadow(0 3px 6px rgba(0,0,0,0.25));
+  }
   header p {
     margin: 0;
     opacity: 0.85;
     font-size: 0.95rem;
+  }
+  header p.next-meeting {
+    margin-top: 0.6rem;
+    opacity: 1;
+    font-weight: 700;
+    font-size: 0.98rem;
+    background: rgba(255,255,255,0.15);
+    display: inline-block;
+    padding: 0.4rem 0.9rem;
+    border-radius: 999px;
   }
   nav {
     max-width: 760px;
@@ -211,8 +231,18 @@
 <body>
   <span id="top-anchor"></span>
   <header>
+    <div class="shield-badge">
+      <svg viewBox="0 0 120 140" xmlns="http://www.w3.org/2000/svg">
+        <path d="M60 4 L112 22 L112 66 C112 104 90 126 60 138 C30 126 8 104 8 66 L8 22 Z"
+              fill="#ffffff" stroke="#1f4d36" stroke-width="4"/>
+        <text x="60" y="58" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="22" font-weight="800" fill="#1f4d36">ISGM</text>
+        <text x="60" y="84" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="20" font-weight="700" fill="#2f6f4e">Core</text>
+        <text x="60" y="108" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="20" font-weight="700" fill="#2f6f4e">Team</text>
+      </svg>
+    </div>
     <h1>July 10 Masjid Team Notes</h1>
     <p>Core Team Meeting — click a section to expand it</p>
+    <p class="next-meeting">Next Meeting InshaaAllah: Aug 7 or 8 at Maghrib</p>
   </header>
 
   <nav>
@@ -366,26 +396,27 @@
             <li>Design and distribute a short, easy-to-fill post-event survey</li>
             <li>Set up a recurring WhatsApp update after each event/project</li>
             <li>Add TIDC and soup kitchen highlights to the monthly/bi-monthly newsletter</li>
+            <li>Announce next meeting (InshaaAllah Aug 7 or 8 at Maghrib) to the community</li>
           </ol>
         </div>
 
         <div class="owner-group">
           <h4>School Committee &amp; Comms Team</h4>
-          <ol class="action-list" start="21">
+          <ol class="action-list" start="22">
             <li>Share school improvement updates with the community</li>
           </ol>
         </div>
 
         <div class="owner-group">
           <h4>Each Committee (define own, share for feedback)</h4>
-          <ol class="action-list" start="22">
+          <ol class="action-list" start="23">
             <li>Define and document success metrics for each committee</li>
           </ol>
         </div>
 
         <div class="owner-group">
           <h4>Care Team - Br Brahimi</h4>
-          <ol class="action-list" start="23">
+          <ol class="action-list" start="24">
             <li>Purchase larger trolleys/trash barrels</li>
             <li>Roll out the hybrid cleaning model (self-cleaning + hired cleaning)</li>
             <li>Khidmah project with core team and community</li>
@@ -395,14 +426,14 @@
 
         <div class="owner-group">
           <h4>School Committee</h4>
-          <ol class="action-list" start="27">
+          <ol class="action-list" start="28">
             <li>Communicate expectation that students clean their own classrooms after class</li>
           </ol>
         </div>
 
         <div class="owner-group">
           <h4>Imam Advisory Team</h4>
-          <ol class="action-list" start="28">
+          <ol class="action-list" start="29">
             <li>Investigate declining attendance — address language/prep issues with the Shaykh</li>
             <li>Develop an action plan to reverse the declining attendance trend</li>
           </ol>
