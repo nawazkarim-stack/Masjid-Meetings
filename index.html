@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Masjid Core Team Notes — August 10 Meeting</title>
+<style>
+  :root {
+    --green: #2f6f4e;
+    --green-dark: #1f4d36;
+    --bg: #f7f5ef;
+    --card: #ffffff;
+    --text: #2a2a2a;
+    --muted: #6b6b6b;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+  }
+  header {
+    background: linear-gradient(135deg, var(--green), var(--green-dark));
+    color: white;
+    padding: 2.2rem 1.5rem 2.6rem;
+    text-align: center;
+  }
+  header h1 {
+    margin: 0 0 0.3rem;
+    font-size: 1.7rem;
+    letter-spacing: 0.3px;
+  }
+  header p {
+    margin: 0;
+    opacity: 0.85;
+    font-size: 0.95rem;
+  }
+  nav {
+    max-width: 760px;
+    margin: -1.6rem auto 2rem;
+    background: var(--card);
+    border-radius: 14px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+    padding: 1.1rem 1.3rem;
+  }
+  nav h2 {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    margin: 0 0 0.7rem;
+  }
+  nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.5rem;
+  }
+  nav li a {
+    display: block;
+    text-decoration: none;
+    color: var(--green-dark);
+    background: #eef4ee;
+    padding: 0.55rem 0.8rem;
+    border-radius: 8px;
+    font-size: 0.92rem;
+    font-weight: 600;
+    transition: background 0.15s ease;
+    cursor: pointer;
+  }
+  nav li a:hover {
+    background: #dcebe0;
+  }
+  main {
+    max-width: 760px;
+    margin: 0 auto 3rem;
+    padding: 0 1.3rem;
+  }
+  .controls {
+    max-width: 760px;
+    margin: 0 auto 1rem;
+    padding: 0 1.3rem;
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.6rem;
+  }
+  .controls button {
+    background: var(--card);
+    border: 1px solid #ddd;
+    color: var(--green-dark);
+    font-weight: 600;
+    font-size: 0.82rem;
+    padding: 0.45rem 0.9rem;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  .controls button:hover {
+    background: #eef4ee;
+  }
+  details.category {
+    background: var(--card);
+    border-radius: 14px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.06);
+    margin-bottom: 1rem;
+    scroll-margin-top: 1rem;
+    overflow: hidden;
+  }
+  details.category summary {
+    list-style: none;
+    cursor: pointer;
+    padding: 1.1rem 1.6rem;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--green-dark);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.6rem;
+  }
+  details.category summary::-webkit-details-marker { display: none; }
+  details.category summary .label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  details.category summary .chevron {
+    font-size: 0.9rem;
+    color: var(--muted);
+    transition: transform 0.2s ease;
+  }
+  details.category[open] summary .chevron {
+    transform: rotate(90deg);
+  }
+  details.category .body {
+    padding: 0 1.6rem 1.3rem;
+    border-top: 2px solid #eef4ee;
+  }
+  details.category ul {
+    margin: 1rem 0 0;
+    padding-left: 1.2rem;
+  }
+  details.category li {
+    margin-bottom: 0.55rem;
+    line-height: 1.45;
+    font-size: 0.98rem;
+  }
+  ol.action-list {
+    margin: 1rem 0 0;
+    padding-left: 1.4rem;
+  }
+  ol.action-list li {
+    margin-bottom: 0.65rem;
+    line-height: 1.45;
+    font-size: 0.98rem;
+    padding-left: 0.2rem;
+  }
+  ol.action-list li::marker {
+    font-weight: 700;
+    color: var(--green);
+  }
+  .owner {
+    display: inline-block;
+    margin-left: 0.5rem;
+    background: #eef4ee;
+    color: var(--green-dark);
+    font-size: 0.76rem;
+    font-weight: 700;
+    padding: 0.15rem 0.55rem;
+    border-radius: 999px;
+    white-space: nowrap;
+    vertical-align: middle;
+  }
+  .big-check {
+    display: inline-block;
+    font-size: 2rem;
+    font-weight: 900;
+    color: var(--green);
+    line-height: 0;
+    vertical-align: middle;
+    margin-left: 0.4rem;
+    transform: translateY(0.15rem);
+  }
+  .owner-group {
+    margin-top: 1.1rem;
+  }
+  .owner-group:first-of-type {
+    margin-top: 1rem;
+  }
+  .owner-group h4 {
+    margin: 0 0 0.4rem;
+    font-size: 0.92rem;
+    font-weight: 700;
+    color: white;
+    background: var(--green);
+    display: inline-block;
+    padding: 0.25rem 0.7rem;
+    border-radius: 999px;
+  }
+  #top-anchor { position: relative; top: -10px; }
+  footer {
+    text-align: center;
+    color: var(--muted);
+    font-size: 0.8rem;
+    padding-bottom: 2rem;
+  }
+</style>
+</head>
+<body>
+  <span id="top-anchor"></span>
+  <header>
+    <h1>Masjid Core Team Notes</h1>
+    <p>August 10 Meeting — click a section to expand it</p>
+  </header>
+
+  <nav>
+    <h2>Jump to a Section</h2>
+    <ul>
+      <li><a onclick="openSection('speakers-events')">📢 Speakers &amp; Events</a></li>
+      <li><a onclick="openSection('communication')">📣 Communication &amp; Community Updates</a></li>
+      <li><a onclick="openSection('parking')">🚗 Parking &amp; Facilities</a></li>
+      <li><a onclick="openSection('cleanliness')">🧹 Masjid Cleanliness / Khidmah</a></li>
+      <li><a onclick="openSection('hall-programs')">🕌 Hall Usage &amp; Programs</a></li>
+      <li><a onclick="openSection('leadership')">👥 Leadership</a></li>
+      <li><a onclick="openSection('action-items')">✅ Action Items</a></li>
+    </ul>
+  </nav>
+
+  <div class="controls">
+    <button onclick="setAll(true)">Expand all</button>
+    <button onclick="setAll(false)">Collapse all</button>
+  </div>
+
+  <main>
+    <details class="category" id="speakers-events">
+      <summary><span class="label">📢 Speakers &amp; Events</span><span class="chevron">▶</span></summary>
+      <div class="body">
+        <ul>
+          <li>Mufti Nazir's session was very well received</li>
+          <li>Explore bringing in a Maghrib speaker from a different school of thought</li>
+          <li>Event committee to include Brother Yazid and Brother Khalid Ansari</li>
+          <li>Need a clearer process for choosing topics and speakers</li>
+          <li>Concern: too many scholars being invited, straining sponsorship budget</li>
+          <li>Share the event calendar with the Shaykh and community in advance</li>
+          <li>New program ideas: leadership course, book club, community "trigger" events</li>
+          <li>Organic, community-driven programs to be encouraged</li>
+          <li>Launch a youth mentorship program as a pilot</li>
+          <li>Build a simple, easy-to-fill survey for event feedback</li>
+        </ul>
+      </div>
+    </details>
+
+    <details class="category" id="communication">
+      <summary><span class="label">📣 Communication &amp; Community Updates</span><span class="chevron">▶</span></summary>
+      <div class="body">
+        <ul>
+          <li>Post event/project updates to the WhatsApp group after completion</li>
+          <li>Share school updates with the community so people see improvements</li>
+          <li>Define success metrics for each committee</li>
+          <li>Keep community informed on major projects or hindrances/delays</li>
+        </ul>
+      </div>
+    </details>
+
+    <details class="category" id="parking">
+      <summary><span class="label">🚗 Parking &amp; Facilities</span><span class="chevron">▶</span></summary>
+      <div class="body">
+        <ul>
+          <li>Need parking volunteers</li>
+          <li>Volunteers should consider going to BIS for 2pm salah</li>
+          <li>Install signage for parking at the back</li>
+          <li>Keep the left lane clear for entry access</li>
+        </ul>
+      </div>
+    </details>
+
+    <details class="category" id="cleanliness">
+      <summary><span class="label">🧹 Masjid Cleanliness / Khidmah</span><span class="chevron">▶</span></summary>
+      <div class="body">
+        <ul>
+          <li>Advertise post-event highlights, especially TIDC and soup kitchen, in the monthly/bi-monthly newsletter</li>
+          <li>Ensure post-event cleanup is done each time</li>
+          <li>General masjid cleanup needed</li>
+          <li>Charge event organizers a cleaning fee (~$600) for open/close service</li>
+          <li>Establish a dedicated cleanup crew / Khidmah team</li>
+          <li>Get bigger trolleys/trash barrels and use them more</li>
+          <li>Move to a hybrid cleaning model — self-cleaning plus hired cleaning</li>
+          <li>Khidmah project scheduled twice a month</li>
+          <li>Post-event cleaning once a month</li>
+          <li>Students should clean their own classrooms after each class</li>
+        </ul>
+      </div>
+    </details>
+
+    <details class="category" id="hall-programs">
+      <summary><span class="label">🕌 Hall Usage &amp; Programs</span><span class="chevron">▶</span></summary>
+      <div class="body">
+        <ul>
+          <li>Jamaat protocol for main hall — use a divider</li>
+          <li>Establish a code of conduct</li>
+          <li>Declining attendance linked to language barriers with the Shaykh and insufficient prep</li>
+          <li>Fixed halaqah set for the 3rd of every month</li>
+          <li>Need strategies to reverse the declining attendance trend</li>
+        </ul>
+      </div>
+    </details>
+
+    <details class="category" id="leadership">
+      <summary><span class="label">👥 Leadership</span><span class="chevron">▶</span></summary>
+      <div class="body">
+        <ul>
+          <li>Update committee list with current names/members</li>
+        </ul>
+      </div>
+    </details>
+
+    <details class="category" id="action-items">
+      <summary><span class="label">✅ Action Items</span><span class="chevron">▶</span></summary>
+      <div class="body">
+        <div class="owner-group">
+          <h4>Nawaz</h4>
+          <ol class="action-list" start="1">
+            <li>Share notes from the meeting <span class="big-check">✓</span></li>
+            <li>Finalize event committee membership — add Brother Yazid and Brother Khalid Ansari</li>
+            <li>Update and circulate the current committee list with names</li>
+          </ol>
+        </div>
+
+        <div class="owner-group">
+          <h4>Event Committee</h4>
+          <ol class="action-list" start="4">
+            <li>Draft a clear process/checklist for selecting event topics and speakers</li>
+            <li>Review sponsorship budget vs. number of scholars invited; set a cap or guideline</li>
+            <li>Share the upcoming event calendar with the Shaykh and community</li>
+            <li>Recruit parking volunteers for Jumu'ah</li>
+            <li>Coordinate with volunteers on attending BIS for 2pm salah</li>
+            <li>Order and install parking signage for the back lot</li>
+            <li>Mark/enforce the left lane as clear for entry access</li>
+            <li>Confirm post-event cleanup happens after every event, without exception</li>
+            <li>Set the $600 open/close cleaning fee policy for events and communicate it to organizers</li>
+            <li>Install/assign a divider for jamaat protocol in the main hall</li>
+            <li>Draft and publish a code of conduct</li>
+            <li>Confirm fixed halaqah date as the 3rd of every month</li>
+          </ol>
+        </div>
+
+        <div class="owner-group">
+          <h4>Youth Committee</h4>
+          <ol class="action-list" start="16">
+            <li>Launch youth mentorship program as a pilot</li>
+          </ol>
+        </div>
+
+        <div class="owner-group">
+          <h4>All Core Team Members</h4>
+          <ol class="action-list" start="17">
+            <li>Scope and launch pilot programs: leadership course, book club, community trigger events</li>
+          </ol>
+        </div>
+
+        <div class="owner-group">
+          <h4>Comms Team</h4>
+          <ol class="action-list" start="18">
+            <li>Design and distribute a short, easy-to-fill post-event survey</li>
+            <li>Set up a recurring WhatsApp update after each event/project</li>
+            <li>Add TIDC and soup kitchen highlights to the monthly/bi-monthly newsletter</li>
+          </ol>
+        </div>
+
+        <div class="owner-group">
+          <h4>School Committee &amp; Comms Team</h4>
+          <ol class="action-list" start="21">
+            <li>Share school improvement updates with the community</li>
+          </ol>
+        </div>
+
+        <div class="owner-group">
+          <h4>Each Committee (define own, share for feedback)</h4>
+          <ol class="action-list" start="22">
+            <li>Define and document success metrics for each committee</li>
+          </ol>
+        </div>
+
+        <div class="owner-group">
+          <h4>Care Team - Br Brahimi</h4>
+          <ol class="action-list" start="23">
+            <li>Purchase larger trolleys/trash barrels</li>
+            <li>Roll out the hybrid cleaning model (self-cleaning + hired cleaning)</li>
+            <li>Khidmah project with core team and community</li>
+            <li>Schedule general post-event cleaning once a month</li>
+          </ol>
+        </div>
+
+        <div class="owner-group">
+          <h4>School Committee</h4>
+          <ol class="action-list" start="27">
+            <li>Communicate expectation that students clean their own classrooms after class</li>
+          </ol>
+        </div>
+
+        <div class="owner-group">
+          <h4>Imam Advisory Team</h4>
+          <ol class="action-list" start="28">
+            <li>Investigate declining attendance — address language/prep issues with the Shaykh</li>
+            <li>Develop an action plan to reverse the declining attendance trend</li>
+          </ol>
+        </div>
+      </div>
+    </details>
+  </main>
+
+  <footer>Core Team Meeting Notes — August 10</footer>
+
+  <script>
+    function openSection(id) {
+      var el = document.getElementById(id);
+      if (!el) return;
+      el.open = true;
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+    function setAll(state) {
+      document.querySelectorAll('details.category').forEach(function(d) {
+        d.open = state;
+      });
+    }
+  </script>
+</body>
+</html>
